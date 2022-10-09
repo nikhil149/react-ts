@@ -152,6 +152,9 @@
   gap: 8px;
   width: 414px;
   height: 42px;
+  outline: none;
+  border: 1px solid #d1d5db;
+  border-right: none;
 }
 
 .inputComponent_input::placeholder {
