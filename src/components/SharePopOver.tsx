@@ -9,12 +9,16 @@ import classes from "./SharePop.module.css";
 
 const SharePopOver: React.FC<{}> = () => {
   const [isFocus, setIsFocus] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const focusChangeHandler = () => {
     setIsFocus(true);
   };
   const blurChangeHandler = () => {
     // setIsFocus(false);
+  };
+  const inputChangeHandler = (e: any) => {
+    setSearchValue(e.target.value);
   };
   return (
     <div className={classes.container}>
@@ -53,6 +57,8 @@ const SharePopOver: React.FC<{}> = () => {
                   <input
                     className={classes.inputComponent_input}
                     placeholder="People, emails, groups"
+                    value={searchValue}
+                    onChange={inputChangeHandler}
                     onFocus={focusChangeHandler}
                     onBlur={blurChangeHandler}
                   />
@@ -64,7 +70,7 @@ const SharePopOver: React.FC<{}> = () => {
                   </button>
                 </div>
               </div>
-              {isFocus ? <Group /> : <ModalBody />}
+              {isFocus ? <Group searchText={searchValue} /> : <ModalBody />}
             </div>
           </div>
         </div>

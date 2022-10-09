@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./Group.module.css";
 import data from "../assets/data.json";
 
-const Group: React.FC = () => {
+const Group: React.FC<{ searchText: string }> = ({ searchText }) => {
   return (
     <div className={classes.container}>
       <div className={classes.container_div}>
@@ -15,13 +15,23 @@ const Group: React.FC = () => {
               >{`Select a ${value.category}`}</span>
             </div>
             <div className={classes.container_div__groupDiv__secondDiv}>
-              {value.names.map((categoryNames: string) => (
-                <div className={classes.container__spanDiv}>
-                  <span key={categoryNames} className={classes.container__spanDiv_span}>
-                    {categoryNames}
-                  </span>
-                </div>
-              ))}
+              {value.names
+                .filter((catNames) =>
+                  catNames
+                    .trim()
+                    .toLocaleLowerCase()
+                    .includes(searchText.toLocaleLowerCase())
+                )
+                .map((categoryNames: string) => (
+                  <div className={classes.container__spanDiv}>
+                    <span
+                      key={categoryNames}
+                      className={classes.container__spanDiv_span}
+                    >
+                      {categoryNames}
+                    </span>
+                  </div>
+                ))}
             </div>
           </div>
         ))}
