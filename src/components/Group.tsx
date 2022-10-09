@@ -19,8 +19,8 @@ const Group: React.FC<{ searchText: string }> = ({ searchText }) => {
                 .filter((catNames) =>
                   catNames
                     .trim()
-                    .toLocaleLowerCase()
-                    .includes(searchText.toLocaleLowerCase())
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase())
                 )
                 .map((categoryNames: string) => (
                   <div className={classes.container__spanDiv}>
