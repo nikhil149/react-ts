@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 10px;
+  align-self: stretch;
+
+  background: #ffffff;
+}
+
+.container_div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.container_div__groupDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+  align-self: stretch;
+}
+
+.container_div__groupDiv_div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0px;
+}
+
+.container_div__groupDiv__secondDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 12px;
+  align-self: stretch;
+}
+
+.container__spanDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 12px;
+  align-self: stretch;
+}
+
+.container__spanDiv:hover {
+  background: #f3f4f6;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container__span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 12px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* gray/700 */
+
+  color: #374151;
+}
+
+.container__spanDiv_span {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* gray/900 */
+
+  color: #111827;
+}

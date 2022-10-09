@@ -1,14 +1,21 @@
-import {
-  faEarthAsia,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
+import Group from "./Group";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
 
 import classes from "./SharePop.module.css";
 
 const SharePopOver: React.FC<{}> = () => {
+  const [isFocus, setIsFocus] = useState(false);
+
+  const focusChangeHandler = () => {
+    setIsFocus(true);
+  };
+  const blurChangeHandler = () => {
+    // setIsFocus(false);
+  };
   return (
     <div className={classes.container}>
       <div className={classes.container__firstdiv}>
@@ -46,6 +53,8 @@ const SharePopOver: React.FC<{}> = () => {
                   <input
                     className={classes.inputComponent_input}
                     placeholder="People, emails, groups"
+                    onFocus={focusChangeHandler}
+                    onBlur={blurChangeHandler}
                   />
                   <button
                     className={classes.inputComponent_button}
@@ -55,7 +64,7 @@ const SharePopOver: React.FC<{}> = () => {
                   </button>
                 </div>
               </div>
-              <ModalBody />
+              {isFocus ? <Group /> : <ModalBody />}
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@
 
   position: absolute;
   width: 512px;
-  height: 262px;
   left: 124px;
   top: 164px;
 
@@ -22,10 +21,6 @@
   flex-direction: column;
   align-items: center;
   padding: 0px;
-
-  position: absolute;
-  width: 512px;
-  height: 262px;
   left: 0px;
   top: 0px;
 
@@ -114,7 +109,6 @@
   gap: 10px;
 
   width: 512px;
-  height: 134px;
 
   background: #ffffff;
 }
