@@ -23,7 +23,7 @@ const Group: React.FC<{ searchText: string }> = ({ searchText }) => {
                     .includes(searchText.toLowerCase())
                 )
                 .map((categoryNames: string) => (
-                  <div className={classes.container__spanDiv}>
+                  <div key={categoryNames} className={classes.container__spanDiv}>
                     <span
                       key={categoryNames}
                       className={classes.container__spanDiv_span}
