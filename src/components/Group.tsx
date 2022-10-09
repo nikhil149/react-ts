@@ -3,7 +3,13 @@ import React from "react";
 import classes from "./Group.module.css";
 import data from "../assets/data.json";
 
-const Group: React.FC<{ searchText: string }> = ({ searchText }) => {
+const Group: React.FC<{ searchText: string, onSelectHandler: (value: string)=> void }> = ({ searchText, onSelectHandler }) => {
+
+  const getSelectName = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>)=>{
+    onSelectHandler(e.currentTarget?.innerText);
+    
+  }
+
   return (
     <div className={classes.container}>
       <div className={classes.container_div}>
@@ -27,6 +33,7 @@ const Group: React.FC<{ searchText: string }> = ({ searchText }) => {
                     <span
                       key={categoryNames}
                       className={classes.container__spanDiv_span}
+                      onClick={getSelectName}
                     >
                       {categoryNames}
                     </span>

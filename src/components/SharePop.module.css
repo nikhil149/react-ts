@@ -189,6 +189,11 @@
   color: #374151;
 }
 
+.chip {
+  position: absolute !important;
+  background: #E5E7EB !important;
+  border-radius: 4px;
+}
 
 
 

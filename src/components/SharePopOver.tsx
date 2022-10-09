@@ -1,5 +1,6 @@
 import { faEarthAsia } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Chip } from "@mui/material";
 import React, { useState } from "react";
 import Group from "./Group";
 import ModalBody from "./ModalBody";
@@ -12,6 +13,8 @@ const SharePopOver: React.FC<{}> = () => {
   const [isFocus, setIsFocus] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
+  const [selectedValue, setSelctedValue] = useState<string[]>([]);
+
   const focusChangeHandler = () => {
     setIsFocus(true);
   };
@@ -21,7 +24,18 @@ const SharePopOver: React.FC<{}> = () => {
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
- 
+
+  const selectNameHandler = (value: string) => {
+    setSelctedValue((prevState) => [...new Set([...prevState, value])]);
+  };
+
+  const handleDelete = (chipToDelete: string) => {
+    console.log(chipToDelete);
+    setSelctedValue((prevState) =>
+      prevState.filter((value) => value !== chipToDelete)
+    );
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.container__firstdiv}>
@@ -64,9 +78,15 @@ const SharePopOver: React.FC<{}> = () => {
                     onFocus={focusChangeHandler}
                     onBlur={blurChangeHandler}
                   />
-                  {isFocus && (
-                    <Permissions />
-                  )}
+                  {selectedValue.map((value) => (
+                    <Chip
+                      className={classes.chip}
+                      key={value}
+                      label={value}
+                      onDelete={() => handleDelete(value)}
+                    />
+                  ))}
+                  {isFocus && <Permissions />}
                   <button
                     className={classes.inputComponent_button}
                     type="button"
@@ -75,7 +95,14 @@ const SharePopOver: React.FC<{}> = () => {
                   </button>
                 </div>
               </div>
-              {isFocus ? <Group searchText={searchValue} /> : <ModalBody />}
+              {isFocus ? (
+                <Group
+                  searchText={searchValue}
+                  onSelectHandler={selectNameHandler}
+                />
+              ) : (
+                <ModalBody />
+              )}
             </div>
           </div>
         </div>
