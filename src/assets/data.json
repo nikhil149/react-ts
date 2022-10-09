@@ -1,4 +1,14 @@
 [
-  { "category": "people", "names": ["Wade Cooper", "Arlene Maccoy"] },
-  { "category": "group", "names": ["Product", "Engineering"] }
+  {
+    "category": "people",
+    "names": ["Wade Cooper", "Arlene Maccoy"],
+    "emails": ["wadecooper@abc.com", "arlenemaccoy@abc.com"],
+    "permissions": [3, 3]
+  },
+  {
+    "category": "group",
+    "names": ["Product", "Engineering"],
+    "emails": ["product@abc.com"],
+    "permissions": [3, 3]
+  }
 ]
