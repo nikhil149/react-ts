@@ -6,6 +6,7 @@ import Group from "./Group";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
 import Permissions from "./Permissions";
+import data from "../assets/data.json";
 
 import classes from "./SharePop.module.css";
 
@@ -14,6 +15,32 @@ const SharePopOver: React.FC<{}> = () => {
   const [searchValue, setSearchValue] = useState("");
 
   const [selectedValue, setSelctedValue] = useState<string[]>([]);
+
+  const [invitedList, setInvitedList] = useState<
+    { name: string; email: string; permission: number }[]
+  >([]);
+
+  const handleDelete = (chipToDelete: string) => {
+    setSelctedValue((prevState) =>
+      prevState.filter((value) => value !== chipToDelete)
+    );
+  };
+
+  const inviteHandler = () => {
+    const personDetails = data.filter((personObject) =>
+      personObject.names.includes(selectedValue[0])
+    );
+    const nameIndex = personDetails[0].names.indexOf(selectedValue[0]);
+    const invitedPerson = {
+      name: personDetails[0].names[nameIndex],
+      email: personDetails[0].emails[nameIndex],
+      permission: personDetails[0].permissions[nameIndex],
+    };
+
+    setInvitedList((prevState) => [...prevState, invitedPerson]);
+    setIsFocus(false)
+    handleDelete(invitedPerson.name)
+  };
 
   const focusChangeHandler = () => {
     setIsFocus(true);
@@ -27,13 +54,6 @@ const SharePopOver: React.FC<{}> = () => {
 
   const selectNameHandler = (value: string) => {
     setSelctedValue((prevState) => [...new Set([...prevState, value])]);
-  };
-
-  const handleDelete = (chipToDelete: string) => {
-    console.log(chipToDelete);
-    setSelctedValue((prevState) =>
-      prevState.filter((value) => value !== chipToDelete)
-    );
   };
 
   return (
@@ -90,6 +110,7 @@ const SharePopOver: React.FC<{}> = () => {
                   <button
                     className={classes.inputComponent_button}
                     type="button"
+                    onClick={inviteHandler}
                   >
                     invite
                   </button>
@@ -101,7 +122,7 @@ const SharePopOver: React.FC<{}> = () => {
                   onSelectHandler={selectNameHandler}
                 />
               ) : (
-                <ModalBody />
+                <ModalBody invitedList={invitedList} />
               )}
             </div>
           </div>
