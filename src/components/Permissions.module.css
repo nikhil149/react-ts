@@ -1,0 +1,53 @@
+.permission__button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 9px 7px 11px !important;
+    gap: 8px;
+    width: 107px;
+    height: 30px;
+    border-radius: 4px;
+    word-wrap: normal !important;
+    font-family: "Inter" !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    border: none;
+    outline: none;
+    color: #6b7280 !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.permission__button.css-sghohy-MuiButtonBase-root-MuiButton-root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 9px 7px 11px !important;
+  gap: 8px;
+  width: 107px;
+  height: 30px;
+  border-radius: 4px;
+  word-wrap: normal !important;
+  font-family: "Inter" !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  border: none;
+  outline: none;
+  color: #6b7280 !important;
+  background: none !important;
+  box-shadow: none;
+
+}
+
+.inputComponent__select:active {
+  border: none;
+  outline: none;
+}

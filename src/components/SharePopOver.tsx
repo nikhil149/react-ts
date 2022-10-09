@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Group from "./Group";
 import ModalBody from "./ModalBody";
 import ModalFooter from "./ModalFooter";
+import Permissions from "./Permissions";
 
 import classes from "./SharePop.module.css";
 
@@ -17,9 +18,10 @@ const SharePopOver: React.FC<{}> = () => {
   const blurChangeHandler = () => {
     // setIsFocus(false);
   };
-  const inputChangeHandler = (e: any) => {
+  const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
+ 
   return (
     <div className={classes.container}>
       <div className={classes.container__firstdiv}>
@@ -62,6 +64,9 @@ const SharePopOver: React.FC<{}> = () => {
                     onFocus={focusChangeHandler}
                     onBlur={blurChangeHandler}
                   />
+                  {isFocus && (
+                    <Permissions />
+                  )}
                   <button
                     className={classes.inputComponent_button}
                     type="button"
